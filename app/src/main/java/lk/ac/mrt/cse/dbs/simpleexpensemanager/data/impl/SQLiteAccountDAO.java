@@ -72,17 +72,17 @@ public class SQLiteAccountDAO extends DatabaseHandler implements AccountDAO {
     public Account getAccount(String accountNo) {
 
         SQLiteDatabase db = this.getReadableDatabase();
-        String sql = "select * from accounts where accountNo = '"+ accountNo + "' ;";
+        String sql = "select bankName,accountHolderName,balance from accounts where accountNo = '"+ accountNo + "' ;";
 
         Cursor cursor = db.rawQuery(sql,null);
 
-        Account account = null;
+        //Account account = null;
+        cursor.moveToFirst();
+        String bankName = cursor.getString(0);
+        String accountHolderName = cursor.getString(1);
+        double balance = cursor.getDouble(2);
 
-        String bankName = cursor.getString(1);
-        String accountHolderName = cursor.getString(2);
-        double balance = cursor.getInt(3);
-
-        account = new Account(accountNo,bankName,accountHolderName,balance);
+        Account account = new Account(accountNo,bankName,accountHolderName,balance);
 
         cursor.close();
         db.close();

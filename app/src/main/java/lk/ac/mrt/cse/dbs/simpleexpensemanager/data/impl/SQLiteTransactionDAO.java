@@ -4,7 +4,9 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.os.Build;
 import android.support.annotation.Nullable;
+import android.support.annotation.RequiresApi;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -26,11 +28,14 @@ public class SQLiteTransactionDAO extends DatabaseHandler implements Transaction
         this.transactionList=new ArrayList<Transaction>();
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
     public void logTransaction(Date date, String accountNo, ExpenseType expenseType, double amount) {
         SQLiteDatabase sqLiteDatabase=this.getWritableDatabase();
         ContentValues cv=new ContentValues();
-        String transDate=new SimpleDateFormat("dd-mm-yyyy").format(date);
+        String transDate=new SimpleDateFormat("dd-MM-yyyy").format(date);
+        System.out.println(transDate);
+        System.out.println(date.toString());
         cv.put("date",transDate);
         cv.put("accountNo",accountNo);
         cv.put("type",String.valueOf(expenseType));
@@ -50,9 +55,9 @@ public class SQLiteTransactionDAO extends DatabaseHandler implements Transaction
 
             do{
                 String startdate = cursor.getString(1);
-                Date strdate= null;
+                //Date strdate= null;
                 try {
-                    strdate = new SimpleDateFormat("dd-mm-yyyy").parse(startdate);
+                    Date strdate = new SimpleDateFormat("dd-MM-yyyy").parse(startdate);
                     String accountNo = cursor.getString(2);
 
                     String type = cursor.getString(3);
