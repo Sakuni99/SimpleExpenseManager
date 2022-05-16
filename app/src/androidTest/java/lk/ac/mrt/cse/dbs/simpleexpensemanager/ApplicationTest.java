@@ -85,25 +85,25 @@ public class ApplicationTest {
 //
 //    }
 
-    @Test
-    public void  transactionLogTest(){
-        Calendar calendar = Calendar.getInstance();
-        calendar.set(2021, 05, 11);
-        Date transactionDate = calendar.getTime();
-        expenseManager.getTransactionsDAO().logTransaction(transactionDate,"345",ExpenseType.INCOME,100.0);
-
-        List<Transaction> transactionList=expenseManager.getTransactionLogs();
-        for (Transaction t:transactionList) {
-            if(t.getAccountNo()=="345"){
-                assertEquals(t.getAccountNo(),"345");
-                assertEquals(t.getExpenseType(),ExpenseType.INCOME);
-                assertEquals(t.getAmount(),100.0,0.0);
-            }
-
-        }
-        //transactionList.add(transaction);
-
-
-    }
+//    @Test
+//    public void  transactionLogTest(){
+//        Calendar calendar = Calendar.getInstance();
+//        calendar.set(2021, 05, 11);
+//        Date transactionDate = calendar.getTime();
+//        expenseManager.getTransactionsDAO().logTransaction(transactionDate,"345",ExpenseType.INCOME,100.0);
+//
+//        List<Transaction> transactionList=expenseManager.getTransactionLogs();
+//        for (Transaction t:transactionList) {
+//            if(t.getAccountNo()=="345"){
+//                assertEquals(t.getAccountNo(),"345");
+//                assertEquals(t.getExpenseType(),ExpenseType.INCOME);
+//                assertEquals(t.getAmount(),100.0,0.0);
+//            }
+//
+//        }
+//        //transactionList.add(transaction);
+//
+//
+//    }
 
 }
