@@ -68,22 +68,22 @@ public class ApplicationTest {
         assertTrue(accountNumberList.contains("345"));
     }
 
-    @Test
-    public void updateAccountTest(){
-        try {
-            //expenseManager.addAccount("20","BOC","sakuni",500);
-            Account account=expenseManager.getAccountsDAO().getAccount("345");
-            double initialBalance=account.getBalance();
-            expenseManager.getAccountsDAO().updateBalance("345",ExpenseType.INCOME,100.0);
-            //double updatedBalance=initialBalance+100.0;
-            Account account_new=expenseManager.getAccountsDAO().getAccount("345");
-
-            assertEquals(initialBalance+100.0,account_new.getBalance(),0.0);
-        } catch (InvalidAccountException e) {
-            e.printStackTrace();
-        }
-
-    }
+//    @Test
+//    public void updateAccountTest(){
+//        try {
+//            //expenseManager.addAccount("20","BOC","sakuni",500);
+//            Account account=expenseManager.getAccountsDAO().getAccount("345");
+//            double initialBalance=account.getBalance();
+//            expenseManager.getAccountsDAO().updateBalance("345",ExpenseType.INCOME,100.0);
+//            //double updatedBalance=initialBalance+100.0;
+//            Account account_new=expenseManager.getAccountsDAO().getAccount("345");
+//
+//            assertEquals(initialBalance+100.0,account_new.getBalance(),0.0);
+//        } catch (InvalidAccountException e) {
+//            e.printStackTrace();
+//        }
+//
+//    }
 
     @Test
     public void  transactionLogTest(){
